@@ -6,7 +6,8 @@ export interface TransplantCenter {
   city: string;
   state: string;
   status: string;
-  statusDate: Date;
+  startDate: Date;
+  endDate?: Date;
   taskCounts: TaskCount[];
   files: FileModel[];
 }

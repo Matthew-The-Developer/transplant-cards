@@ -5,22 +5,29 @@
 </div>
 
 <div class="content">
+  <mat-card class="center">
+    <mat-card-title-group>
+      <mat-card-title>No Transplants Applied For, <span class="days">{{ daysSinceAdmission }}</span> Days Since Admission</mat-card-title>
+      <mat-card-subtitle>Admitted on {{ patient.admittanceDate | date:'MM/dd/yyyy' }}</mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card>
+
   <button mat-stroked-button color="primary" class="add-transplant">
     <mat-icon>add</mat-icon>
     Add Transplant Center
   </button>
-  
+
   <mat-card *ngFor="let center of centers" class="center">
     <mat-card-title-group>
       <mat-card-title>{{ center.name }}, {{ center.city }}, {{ center.state }}</mat-card-title>
-      <mat-card-subtitle>{{ center.status }} <mat-icon>arrow_right</mat-icon> {{ center.statusDate | date:'MM/dd/yyyy' }} - present</mat-card-subtitle>
+      <mat-card-subtitle>{{ center.status }} <mat-icon>arrow_right</mat-icon> {{ center.startDate | date:'MM/dd/yyyy' }} - {{ center.endDate ? (center.endDate | date:'MM/dd/yyyy') : 'present' }}</mat-card-subtitle>
       <button mat-icon-button color="primary">
         <mat-icon class="edit">edit_square</mat-icon>
       </button>
     </mat-card-title-group>
 
     <mat-card-content>
-      <h3>{{ doabletasks(center.taskCounts) }} Tasks</h3>
+      <h3>{{ tackCount(center.taskCounts) }} Tasks</h3>
       <div class="counts">
         <div *ngFor="let task of center.taskCounts" class="count">
           <mat-icon [class]="taskStatusClass(task).toLowerCase()">circle</mat-icon>

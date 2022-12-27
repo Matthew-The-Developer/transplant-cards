@@ -28,7 +28,7 @@
       width: 100%;
       max-width: 588px;
 
-      margin-bottom: 0.75rem;
+      margin: 0.75rem 0;
 
       background: white;
 
@@ -61,6 +61,10 @@
 
           margin: 0 0.25rem;
         }
+      }
+
+      .days {
+        color:#d32f2f;
       }
 
       mat-icon.edit {
